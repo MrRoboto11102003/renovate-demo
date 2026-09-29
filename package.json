@@ -1,0 +1,13 @@
+{
+  "name": "renovate-demo-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Small npm project for a Renovate walkthrough",
+  "scripts": {
+    "start": "node src/message.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "chalk": "4.1.0"
+  }
+}
