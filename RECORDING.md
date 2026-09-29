@@ -1,24 +1,25 @@
-# Silent demo recording
+# Silent Renovate demo recording
 
-The group presentation explains what Renovate is, installation, benefits, and limitations. This video should show only the concrete result in this repository. Speak live while it plays; do not add recorded narration or repeat the slides as title cards.
+The group slides explain Renovate's purpose, installation, benefits, and limitations. Use this video to show what actually happened in this repository. There is no recorded audio; speak live while the video plays. Keep captions short and pause long enough to read each screen.
 
-## Before recording
+## Evidence ready to show
 
-1. Run `npm.cmd ci`, `npm.cmd start`, and `npm.cmd test` in this directory.
-2. Push the initial commit and check that the GitHub Actions **CI** workflow passes.
-3. Install the Renovate GitHub app for this repository, review and merge its **Configure Renovate** PR, then wait for a real Chalk update PR and its CI result.
-4. Open the app code, the Renovate PR overview, **Files changed**, and **Checks** in browser/editor tabs. Hide notifications and personal information; enlarge the text enough to read in the video.
+- [PR #1: Chalk 4.1.0 to 4.1.2](https://github.com/MrRoboto11102003/renovate-demo/pull/1) was authored by Renovate. It changes `package.json` and `package-lock.json`; both CI test checks passed.
+- [PR #4: Chalk 4.1.0 to 6.0.1](https://github.com/MrRoboto11102003/renovate-demo/pull/4) was also authored by Renovate and changes the same two files. CI failed with `TypeError: chalk.green is not a function` in `src/message.js:4`.
+- The repo's CommonJS code uses `require('chalk')`. The major PR's release notes say Chalk 5 became pure ESM. Keep PR #4 open for the demo; do not merge a failing update just to finish the video.
 
-## Screen sequence (about 3 minutes, with time to talk live)
+## Screen sequence (about 3 to 4 minutes)
 
-| Time | On screen | Short caption, if needed |
+| Time | On screen | Optional caption |
 | --- | --- | --- |
-| 0:00-0:25 | Run `npm.cmd start`, then show Chalk `4.1.0` in `package.json`. | `Starting version: Chalk 4.1.0` |
-| 0:25-0:55 | Open the real Renovate PR. Pause on its author, title, and requested version. | `Renovate proposed this update` |
-| 0:55-1:45 | Open **Files changed**. Point to the version in `package.json` and the matching `package-lock.json` change. | `Manifest and lockfile changed together` |
-| 1:45-2:25 | Open **Checks**. Show the actual CI result and the workflow's `npm ci` / `npm test` steps. | `CI result for this PR` |
-| 2:25-3:00 | Show `src/message.js` and the test. Return to the PR without merging it. | `Review the code before merging` |
+| 0:00-0:20 | Run `npm.cmd start` in this repo and show Chalk `4.1.0` in `package.json`. | `Starting version: 4.1.0` |
+| 0:20-0:50 | Open PR #1. Pause on Renovate as author and the `4.1.2` title. | `PR #1: patch update` |
+| 0:50-1:25 | Open **Files changed** on PR #1. Point to the `package.json` version and `package-lock.json` update. | `Both dependency files updated` |
+| 1:25-1:50 | Show PR #1's two passing CI checks. | `CI passed` |
+| 1:50-2:20 | Open PR #4. Show the `6.0.1` version in **Files changed**. | `PR #4: major update` |
+| 2:20-3:05 | Show PR #4's failed CI check. Open the test job and pause on `TypeError: chalk.green is not a function`. | `CI caught a breaking change` |
+| 3:05-3:30 | Show `src/message.js` line 4, then return to the open PR. | `Code review needed before merge` |
 
-Hold each screen long enough for the audience to read it. Let your live explanation carry the transitions. Do not record the GitHub app installation or general Renovate overview; those are in the group slides.
+Before recording, open the repo and both PRs in tabs, zoom in until versions and checks are legible, and hide personal notifications. Rehearse once with your live explanation. After export, watch the silent video to check the screen order and text size.
 
-If there is no real update PR by recording time, use the real onboarding PR and label any expected update flow clearly as an example. Never present a manually edited PR or static example as Renovate output. Watch the exported video once to check order, legibility, and that no private information appears.
+This repo did not receive a **Configure Renovate** onboarding PR or a Dependency Dashboard issue. Do not include those screens or claim they appeared. The demo also has separate Renovate PRs for GitHub Actions updates; leave them out of this recording.
